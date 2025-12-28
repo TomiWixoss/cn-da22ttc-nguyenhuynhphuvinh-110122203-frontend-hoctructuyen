@@ -1,0 +1,202 @@
+/* Ticket Card Styles */
+.ticket-wrap {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin: 1.5rem auto;
+  position: relative;
+}
+
+.ticket-wrap:hover {
+  /* No hover effects */
+}
+
+.ticket-left {
+  position: relative;
+  z-index: 1;
+}
+
+.ticket-right {
+  position: relative;
+  z-index: 1;
+}
+
+/* Perforated holes are now handled in JSX with dynamic colors */
+
+/* Text styling improvements */
+.ticket-left h1 {
+  margin: 0 0 1rem 0;
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.ticket-left h1 span {
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+.ticket-info-section {
+  margin: 0.7em 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.ticket-info-section h2 {
+  font-size: 0.9em;
+  color: #525252;
+  margin: 0;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  order: 2;
+}
+
+.ticket-info-section span {
+  font-size: 0.7em;
+  color: #a2aeae;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  order: 1;
+}
+
+/* Price display in right section */
+.ticket-price-display {
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0.9em 0 1.2em 0;
+}
+
+.ticket-price-display h3 {
+  margin: 0 0 0.2em 0;
+  font-size: 2.2em;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.ticket-price-display span {
+  display: block;
+  font-size: 0.7em;
+  color: #a2aeae;
+  letter-spacing: 0.5px;
+}
+
+/* Image container in right section */
+.ticket-image-container {
+  position: relative;
+  margin: 0 auto 1rem auto;
+  background: #fff;
+  border-radius: 0.5em;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  .ticket-image-container {
+    background: rgb(31 41 55); /* gray-800 */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.dark .ticket-image-container {
+  background: rgb(31 41 55); /* gray-800 */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Barcode styling */
+.ticket-barcode {
+  height: 2em;
+  width: 0;
+  margin: 1.2em 0 0 0.8em;
+  opacity: 0.8;
+  box-shadow: 1px 0 0 1px #343434, 5px 0 0 1px #343434, 10px 0 0 1px #343434,
+    11px 0 0 1px #343434, 15px 0 0 1px #343434, 18px 0 0 1px #343434,
+    22px 0 0 1px #343434, 23px 0 0 1px #343434, 26px 0 0 1px #343434,
+    30px 0 0 1px #343434, 35px 0 0 1px #343434, 37px 0 0 1px #343434,
+    41px 0 0 1px #343434, 44px 0 0 1px #343434, 47px 0 0 1px #343434,
+    51px 0 0 1px #343434, 56px 0 0 1px #343434, 59px 0 0 1px #343434,
+    64px 0 0 1px #343434, 68px 0 0 1px #343434;
+}
+
+/* Button overlay positioning */
+.ticket-button-overlay {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 10;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .ticket-wrap {
+    width: 95%;
+    max-width: 25em;
+  }
+}
+
+@media (max-width: 480px) {
+  .ticket-wrap {
+    width: 100%;
+    margin: 1rem auto;
+  }
+
+  .ticket-left,
+  .ticket-right {
+    height: 10em !important;
+  }
+
+  .ticket-left {
+    width: 14em !important;
+    padding: 0.8em !important;
+  }
+
+  .ticket-right {
+    width: 5.5em !important;
+    padding: 0.8em !important;
+  }
+
+  .ticket-price-display h3 {
+    font-size: 1.8em;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .ticket-info-section h2 {
+    color: #9ca3af; /* gray-400 */
+  }
+
+  .ticket-info-section span,
+  .ticket-price-display span {
+    color: #6b7280; /* gray-500 */
+  }
+
+  .ticket-barcode {
+    opacity: 0.6;
+    box-shadow: 1px 0 0 1px #9ca3af, 5px 0 0 1px #9ca3af, 10px 0 0 1px #9ca3af,
+      11px 0 0 1px #9ca3af, 15px 0 0 1px #9ca3af, 18px 0 0 1px #9ca3af,
+      22px 0 0 1px #9ca3af, 23px 0 0 1px #9ca3af, 26px 0 0 1px #9ca3af,
+      30px 0 0 1px #9ca3af, 35px 0 0 1px #9ca3af, 37px 0 0 1px #9ca3af,
+      41px 0 0 1px #9ca3af, 44px 0 0 1px #9ca3af, 47px 0 0 1px #9ca3af,
+      51px 0 0 1px #9ca3af, 56px 0 0 1px #9ca3af, 59px 0 0 1px #9ca3af,
+      64px 0 0 1px #9ca3af, 68px 0 0 1px #9ca3af;
+  }
+}
+
+/* Tailwind dark mode class support */
+.dark .ticket-info-section h2 {
+  color: #9ca3af; /* gray-400 */
+}
+
+.dark .ticket-info-section span,
+.dark .ticket-price-display span {
+  color: #6b7280; /* gray-500 */
+}
+
+.dark .ticket-barcode {
+  opacity: 0.6;
+  box-shadow: 1px 0 0 1px #9ca3af, 5px 0 0 1px #9ca3af, 10px 0 0 1px #9ca3af,
+    11px 0 0 1px #9ca3af, 15px 0 0 1px #9ca3af, 18px 0 0 1px #9ca3af,
+    22px 0 0 1px #9ca3af, 23px 0 0 1px #9ca3af, 26px 0 0 1px #9ca3af,
+    30px 0 0 1px #9ca3af, 35px 0 0 1px #9ca3af, 37px 0 0 1px #9ca3af,
+    41px 0 0 1px #9ca3af, 44px 0 0 1px #9ca3af, 47px 0 0 1px #9ca3af,
+    51px 0 0 1px #9ca3af, 56px 0 0 1px #9ca3af, 59px 0 0 1px #9ca3af,
+    64px 0 0 1px #9ca3af, 68px 0 0 1px #9ca3af;
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "./schemas/shop-config.schema.json",
+  "version": "1.0.0",
+  "updatedAt": "2025-08-08",
+  "policy": {
+    "currency": "SynCoin",
+    "tierIndependent": true,
+    "sellEggs": false
+  },
+  "rotation": { "enabled": false, "periodDays": 7 },
+  "emojis": [
+    {
+      "id": "beaming-face",
+      "price": 10,
+      "asset": "vector-emojis-pack/beaming-face.png"
+    },
+    {
+      "id": "confused-face",
+      "price": 10,
+      "asset": "vector-emojis-pack/confused-face.png"
+    },
+    {
+      "id": "exploding-head",
+      "price": 60,
+      "asset": "vector-emojis-pack/exploding-head.png"
+    },
+    { "id": "robot", "price": 60, "asset": "vector-emojis-pack/robot.png" }
+  ],
+  "avatars": [
+    {
+      "id": "narwhal",
+      "price": 300,
+      "asset": "avatar-animal-pack/narwhal.png",
+      "available": true
+    },
+    {
+      "id": "sloth",
+      "price": 300,
+      "asset": "avatar-animal-pack/sloth.png",
+      "available": true
+    }
+  ]
+}

@@ -1,0 +1,408 @@
+/* Synlearnia Logo Text Effects - Pure Color Wave Effects (No Bouncing) */
+/* Blue-Green gradient waves matching the logo aesthetic - SMOOTH COLOR ONLY */
+
+/* ===== BASIC COLOR WAVE - GENTLE GRADIENT FLOW ===== */
+
+.synlearnia-logo-text {
+  font-weight: 900;
+  letter-spacing: 1.2px;
+  background: linear-gradient(
+    135deg,
+    #1e40af 0%,
+    #2563eb 15%,
+    #3b82f6 30%,
+    #0891b2 45%,
+    #06b6d4 60%,
+    #22d3ee 75%,
+    #10b981 90%,
+    #059669 100%
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: synlearnia-color-wave 4s ease-in-out infinite;
+  color: transparent; /* Fallback for older browsers */
+}
+
+/* Fallback cho trình duyệt không hỗ trợ background-clip */
+@supports not (background-clip: text) {
+  .synlearnia-logo-text {
+    color: #1e40af;
+  }
+  .dark .synlearnia-logo-text {
+    color: #60a5fa;
+  }
+}
+
+.dark .synlearnia-logo-text {
+  background: linear-gradient(
+    135deg,
+    #60a5fa 0%,
+    #3b82f6 15%,
+    #93c5fd 30%,
+    #22d3ee 45%,
+    #67e8f9 60%,
+    #7dd3fc 75%,
+    #4ade80 90%,
+    #10b981 100%
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent; /* Fallback for dark mode */
+}
+
+@keyframes synlearnia-color-wave {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 25%;
+  }
+  50% {
+    background-position: 200% 75%;
+  }
+  75% {
+    background-position: 300% 25%;
+  }
+}
+
+/* ===== ENHANCED COLOR WAVE - SMOOTHER GRADIENT FLOW ===== */
+
+.synlearnia-logo-text-enhanced {
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  background: linear-gradient(
+    45deg,
+    #1e40af 0%,
+    #2563eb 12.5%,
+    #3b82f6 25%,
+    #0891b2 37.5%,
+    #06b6d4 50%,
+    #22d3ee 62.5%,
+    #10b981 75%,
+    #059669 87.5%,
+    #1e40af 100%
+  );
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: synlearnia-enhanced-color-wave 6s ease-in-out infinite;
+  color: transparent;
+}
+
+/* Fallback cho trình duyệt không hỗ trợ background-clip */
+@supports not (background-clip: text) {
+  .synlearnia-logo-text-enhanced {
+    color: #1e40af;
+  }
+  .dark .synlearnia-logo-text-enhanced {
+    color: #60a5fa;
+  }
+}
+
+.dark .synlearnia-logo-text-enhanced {
+  background: linear-gradient(
+    45deg,
+    #60a5fa 0%,
+    #3b82f6 12.5%,
+    #93c5fd 25%,
+    #22d3ee 37.5%,
+    #67e8f9 50%,
+    #7dd3fc 62.5%,
+    #4ade80 75%,
+    #10b981 87.5%,
+    #60a5fa 100%
+  );
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes synlearnia-enhanced-color-wave {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  16.67% {
+    background-position: 50% 25%;
+  }
+  33.33% {
+    background-position: 100% 75%;
+  }
+  50% {
+    background-position: 150% 50%;
+  }
+  66.67% {
+    background-position: 200% 25%;
+  }
+  83.33% {
+    background-position: 100% 75%;
+  }
+}
+
+/* ===== HORIZONTAL FLOW - LINEAR COLOR MOVEMENT ===== */
+
+.synlearnia-logo-text-floating {
+  font-weight: 800;
+  letter-spacing: 1px;
+  background: linear-gradient(
+    90deg,
+    #1e40af,
+    #2563eb,
+    #3b82f6,
+    #0891b2,
+    #06b6d4,
+    #22d3ee,
+    #10b981,
+    #059669
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: synlearnia-horizontal-flow 5s linear infinite;
+  color: transparent;
+}
+
+/* Fallback cho trình duyệt không hỗ trợ background-clip */
+@supports not (background-clip: text) {
+  .synlearnia-logo-text-floating {
+    color: #1e40af;
+  }
+  .dark .synlearnia-logo-text-floating {
+    color: #60a5fa;
+  }
+}
+
+.dark .synlearnia-logo-text-floating {
+  background: linear-gradient(
+    90deg,
+    #60a5fa,
+    #3b82f6,
+    #93c5fd,
+    #22d3ee,
+    #67e8f9,
+    #7dd3fc,
+    #4ade80,
+    #10b981
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes synlearnia-horizontal-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+/* ===== GENTLE PULSE - SOFT COLOR BREATHING ===== */
+
+.synlearnia-logo-text-ripple {
+  font-weight: 900;
+  letter-spacing: 1.3px;
+  background: linear-gradient(
+    135deg,
+    #1e40af 0%,
+    #3b82f6 25%,
+    #06b6d4 50%,
+    #10b981 75%,
+    #1e40af 100%
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: synlearnia-gentle-pulse 4s ease-in-out infinite;
+  color: transparent;
+}
+
+/* Fallback cho trình duyệt không hỗ trợ background-clip */
+@supports not (background-clip: text) {
+  .synlearnia-logo-text-ripple {
+    color: #1e40af;
+  }
+  .dark .synlearnia-logo-text-ripple {
+    color: #60a5fa;
+  }
+}
+
+.dark .synlearnia-logo-text-ripple {
+  background: linear-gradient(
+    135deg,
+    #60a5fa 0%,
+    #93c5fd 25%,
+    #67e8f9 50%,
+    #4ade80 75%,
+    #60a5fa 100%
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes synlearnia-gentle-pulse {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* ===== SLOW OCEAN WAVE - NATURAL WAVE PATTERN ===== */
+
+.synlearnia-logo-text-ocean {
+  font-weight: 900;
+  letter-spacing: 1.4px;
+  background: linear-gradient(
+    120deg,
+    #1e40af 0%,
+    #2563eb 20%,
+    #3b82f6 40%,
+    #06b6d4 60%,
+    #22d3ee 80%,
+    #10b981 100%
+  );
+  background-size: 350% 350%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: synlearnia-ocean-wave 8s ease-in-out infinite;
+  color: transparent;
+}
+
+/* Fallback cho trình duyệt không hỗ trợ background-clip */
+@supports not (background-clip: text) {
+  .synlearnia-logo-text-ocean {
+    color: #1e40af;
+  }
+  .dark .synlearnia-logo-text-ocean {
+    color: #60a5fa;
+  }
+}
+
+.dark .synlearnia-logo-text-ocean {
+  background: linear-gradient(
+    120deg,
+    #60a5fa 0%,
+    #3b82f6 20%,
+    #93c5fd 40%,
+    #67e8f9 60%,
+    #7dd3fc 80%,
+    #4ade80 100%
+  );
+  background-size: 350% 350%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes synlearnia-ocean-wave {
+  0%,
+  100% {
+    background-position: 0% 30%;
+  }
+  20% {
+    background-position: 80% 60%;
+  }
+  40% {
+    background-position: 150% 20%;
+  }
+  60% {
+    background-position: 220% 70%;
+  }
+  80% {
+    background-position: 80% 40%;
+  }
+}
+
+/* ===== HOVER EFFECTS - ONLY SPEED CHANGES ===== */
+
+.synlearnia-logo-text:hover {
+  animation-duration: 2s;
+}
+
+.synlearnia-logo-text-enhanced:hover {
+  animation-duration: 3s;
+}
+
+.synlearnia-logo-text-floating:hover {
+  animation-duration: 2.5s;
+}
+
+.synlearnia-logo-text-ripple:hover {
+  animation-duration: 2s;
+}
+
+.synlearnia-logo-text-ocean:hover {
+  animation-duration: 4s;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+@media (max-width: 768px) {
+  .synlearnia-logo-text,
+  .synlearnia-logo-text-enhanced,
+  .synlearnia-logo-text-floating,
+  .synlearnia-logo-text-ripple,
+  .synlearnia-logo-text-ocean {
+    letter-spacing: 0.8px;
+    animation-duration: 4s;
+  }
+}
+
+@media (max-width: 480px) {
+  .synlearnia-logo-text,
+  .synlearnia-logo-text-enhanced,
+  .synlearnia-logo-text-floating,
+  .synlearnia-logo-text-ripple,
+  .synlearnia-logo-text-ocean {
+    letter-spacing: 0.5px;
+    font-weight: 700;
+  }
+}
+
+/* ===== ACCESSIBILITY - MOTION SENSITIVITY ===== */
+
+@media (prefers-reduced-motion: reduce) {
+  .synlearnia-logo-text,
+  .synlearnia-logo-text-enhanced,
+  .synlearnia-logo-text-floating,
+  .synlearnia-logo-text-ripple,
+  .synlearnia-logo-text-ocean {
+    animation: none;
+    /* Fallback to solid color */
+    background: #1e40af;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+    background-clip: unset;
+    color: #1e40af;
+  }
+
+  .dark .synlearnia-logo-text,
+  .dark .synlearnia-logo-text-enhanced,
+  .dark .synlearnia-logo-text-floating,
+  .dark .synlearnia-logo-text-ripple,
+  .dark .synlearnia-logo-text-ocean {
+    background: #60a5fa;
+    color: #60a5fa;
+  }
+}

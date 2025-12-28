@@ -1,0 +1,262 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import api from "./client";
+import {
+  MyAvatarDataResponse,
+  AvailableItemsResponse,
+  EquipItemRequest,
+  EquipItemResponse,
+  CollectionProgressResponse,
+  UserCustomization,
+  UserInventory,
+  CollectionProgress,
+  AvatarData,
+  EmojiData,
+  AvatarRarity,
+  ItemType,
+} from "../../types/avatar";
+
+// Constants for better maintainability
+const AVATAR_ENDPOINTS = {
+  MY_DATA: "/avatar/my-data",
+  AVAILABLE_ITEMS: "/avatar/available-items",
+  EQUIP: "/avatar/equip",
+  COLLECTION_PROGRESS: "/avatar/collection-progress",
+} as const;
+
+const VALID_ITEM_TYPES: ItemType[] = ["avatar", "name_effect", "emoji"];
+
+const RARITY_COLORS: Record<AvatarRarity, string> = {
+  COMMON: "#9CA3AF", // Gray
+  UNCOMMON: "#10B981", // Green
+  RARE: "#3B82F6", // Blue
+  EPIC: "#8B5CF6", // Purple
+  LEGENDARY: "#F59E0B", // Gold
+};
+
+const RARITY_DISPLAY_NAMES: Record<AvatarRarity, string> = {
+  COMMON: "Thông thường",
+  UNCOMMON: "Không phổ biến",
+  RARE: "Hiếm",
+  EPIC: "Sử thi",
+  LEGENDARY: "Huyền thoại",
+};
+
+class AvatarService {
+  /**
+   * Lấy dữ liệu avatar hoàn chỉnh của user hiện tại
+   * GET /api/avatar/my-data
+   */
+  async getMyAvatarData(): Promise<MyAvatarDataResponse["data"]> {
+    try {
+      const response = await api.get(AVATAR_ENDPOINTS.MY_DATA);
+      const data: MyAvatarDataResponse = response.data;
+
+      if (!data.success) {
+        throw new Error(data.message || "Failed to fetch avatar data");
+      }
+
+      return data.data;
+    } catch (error: any) {
+      console.error(
+        "❌ [Avatar Service] Error fetching my avatar data:",
+        error
+      );
+      console.error(
+        "❌ [Avatar Service] Error response:",
+        error.response?.data
+      );
+      throw new Error(
+        error.response?.data?.message ||
+          error.message ||
+          "Không thể tải dữ liệu avatar"
+      );
+    }
+  }
+
+  /**
+   * Lấy danh sách items có thể mở khóa
+   * GET /api/avatar/available-items
+   */
+  async getAvailableItems(): Promise<AvailableItemsResponse["data"]> {
+    try {
+      const response = await api.get(AVATAR_ENDPOINTS.AVAILABLE_ITEMS);
+      const data: AvailableItemsResponse = response.data;
+
+      if (!data.success) {
+        throw new Error(data.message || "Failed to fetch available items");
+      }
+
+      return data.data;
+    } catch (error: any) {
+      console.error(
+        "❌ [Avatar Service] Error fetching available items:",
+        error
+      );
+      console.error(
+        "❌ [Avatar Service] Error response:",
+        error.response?.data
+      );
+      throw new Error(
+        error.response?.data?.message ||
+          error.message ||
+          "Không thể tải danh sách items"
+      );
+    }
+  }
+
+  /**
+   * Trang bị item cho user
+   * POST /api/avatar/equip
+   */
+  async equipItem(request: EquipItemRequest): Promise<void> {
+    try {
+      
+      // Validate request
+      this.validateEquipRequest(request);
+
+      const response = await api.post(AVATAR_ENDPOINTS.EQUIP, request);
+      
+      const data: EquipItemResponse = response.data;
+
+      if (!data.success) {
+        console.error("🔧 [Avatar Service] API returned success=false:", data.message);
+        throw new Error(data.message || "Failed to equip item");
+      }
+
+      // API doesn't return customization, caller should refresh data
+    } catch (error: any) {
+      console.error("❌ [Avatar Service] Error equipping item:", error);
+      console.error("❌ [Avatar Service] Error response:", error.response?.data);
+      throw new Error(
+        error.response?.data?.message ||
+          error.message ||
+          "Không thể trang bị item"
+      );
+    }
+  }
+
+  /**
+   * Private method: Validate equip item request
+   */
+  private validateEquipRequest(request: EquipItemRequest): void {
+    if (!request.itemType || !request.itemId) {
+      throw new Error("Item type và item ID là bắt buộc");
+    }
+
+    if (!VALID_ITEM_TYPES.includes(request.itemType)) {
+      throw new Error(
+        `Item type không hợp lệ. Chỉ chấp nhận: ${VALID_ITEM_TYPES.join(", ")}`
+      );
+    }
+
+    if (request.itemId <= 0) {
+      throw new Error("Item ID phải là số dương");
+    }
+  }
+
+  /**
+   * Lấy tiến độ sưu tập của user
+   * GET /api/avatar/collection-progress
+   */
+  async getCollectionProgress(): Promise<CollectionProgress> {
+    try {
+      const response = await api.get(AVATAR_ENDPOINTS.COLLECTION_PROGRESS);
+      const data: CollectionProgressResponse = response.data;
+
+      if (!data.success) {
+        console.error("❌ [Avatar Service] Collection Progress API returned success=false:", data.message);
+        throw new Error(data.message || "Failed to fetch collection progress");
+      }
+
+      return data.data;
+    } catch (error: any) {
+      console.error("❌ [Avatar Service] Error fetching collection progress:", error);
+      console.error("❌ [Avatar Service] Collection Progress Error response:", error.response?.data);
+      throw new Error(
+        error.response?.data?.message ||
+          error.message ||
+          "Không thể tải tiến độ sưu tập"
+      );
+    }
+  }
+
+  /**
+   * Utility method: Lấy avatar hiện tại đang trang bị từ inventory
+   */
+  getEquippedAvatar(
+    customization: UserCustomization,
+    inventory: UserInventory
+  ): AvatarData | null {
+    if (!customization.equipped_avatar) return null;
+
+    const avatarItem = inventory.avatars.find(
+      (item) => item.Avatar.avatar_id === customization.equipped_avatar?.avatar_id
+    );
+
+    return avatarItem?.Avatar || null;
+  }
+
+  /**
+   * Utility method: Kiểm tra user có sở hữu item không
+   */
+  hasItem(
+    itemType: "avatar" | "emoji",
+    itemId: number,
+    inventory: UserInventory
+  ): boolean {
+    switch (itemType) {
+      case "avatar":
+        return inventory.avatars.some(
+          (item) => item.Avatar.avatar_id === itemId
+        );
+      case "emoji":
+        return inventory.emojis.some((item) => item.Emoji.emoji_id === itemId);
+      default:
+        return false;
+    }
+  }
+
+  /**
+   * Utility method: Format completion rate
+   */
+  formatCompletionRate(rate: string): string {
+    try {
+      const numRate = parseFloat(rate);
+      if (isNaN(numRate)) return "0%";
+      return `${Math.round(numRate)}%`;
+    } catch {
+      return "0%";
+    }
+  }
+
+  /**
+   * Utility method: Lấy màu sắc theo rarity
+   */
+  getRarityColor(rarity: string): string {
+    return RARITY_COLORS[rarity as AvatarRarity] || RARITY_COLORS.COMMON;
+  }
+
+  /**
+   * Utility method: Lấy tên hiển thị cho rarity
+   */
+  getRarityDisplayName(rarity: string): string {
+    return RARITY_DISPLAY_NAMES[rarity as AvatarRarity] || "Không xác định";
+  }
+
+  /**
+   * Utility method: Kiểm tra rarity có hợp lệ không
+   */
+  isValidRarity(rarity: string): rarity is AvatarRarity {
+    return Object.keys(RARITY_COLORS).includes(rarity);
+  }
+
+  /**
+   * Utility method: Lấy tất cả rarities có sẵn
+   */
+  getAllRarities(): AvatarRarity[] {
+    return Object.keys(RARITY_COLORS) as AvatarRarity[];
+  }
+}
+
+export const avatarService = new AvatarService();
+export default avatarService;

@@ -1,0 +1,324 @@
+/* --- Bảng màu đề xuất cho Synlearnia - Nền tảng học tập thông minh --- */
+
+/* Nhập các tiện ích cơ bản và animation của Tailwind CSS */
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Định nghĩa một biến thể tùy chỉnh 'dark' */
+@custom-variant dark (&:is(.dark *));
+
+/* Định nghĩa các bí danh màu sắc ngữ nghĩa */
+@theme inline {
+  /* --- Cơ bản --- */
+  --color-background: var(--background); /* Nền chính */
+  --color-foreground: var(--foreground); /* Chữ chính */
+
+  /* --- Thành phần UI chung --- */
+  --color-card: var(--card); /* Nền thẻ (card) */
+  --color-card-foreground: var(--card-foreground); /* Chữ trên thẻ */
+  --color-popover: var(--popover); /* Nền popover */
+  --color-popover-foreground: var(--popover-foreground); /* Chữ trên popover */
+  --color-border: var(--border); /* Viền mặc định */
+  --color-input: var(--input); /* Nền ô nhập liệu */
+  --color-ring: var(--ring); /* Viền khi focus */
+
+  /* --- Màu theo Vai trò --- */
+  --color-primary: var(--primary); /* Màu chủ đạo (Xanh #2572B8) */
+  --color-primary-foreground: var(
+    --primary-foreground
+  ); /* Chữ trên màu chủ đạo */
+  --color-secondary: var(--secondary); /* Màu phụ (nền/button thứ cấp) */
+  --color-secondary-foreground: var(
+    --secondary-foreground
+  ); /* Chữ trên màu phụ */
+  --color-muted: var(--muted); /* Nền/thành phần rất nhẹ */
+  --color-muted-foreground: var(--muted-foreground); /* Chữ nhẹ (thường xám) */
+  --color-accent: var(--accent); /* Màu nhấn (hover, trạng thái nhẹ) */
+  --color-accent-foreground: var(--accent-foreground); /* Chữ trên màu nhấn */
+
+  /* --- Màu Phản hồi Ngữ nghĩa (Quan trọng cho LMS/Thi cử) --- */
+  --color-destructive: var(--destructive); /* Màu lỗi/xóa (Đỏ) */
+  --color-destructive-foreground: var(
+    --destructive-foreground
+  ); /* Chữ trên màu lỗi */
+  --color-success: var(--success); /* Màu thành công (Xanh lá) */
+  --color-success-foreground: var(
+    --success-foreground
+  ); /* Chữ trên màu thành công */
+  --color-warning: var(--warning); /* Màu cảnh báo (Vàng/Cam) */
+  --color-warning-foreground: var(
+    --warning-foreground
+  ); /* Chữ trên màu cảnh báo */
+  --color-info: var(--info); /* Màu thông tin (Xanh dương nhạt/Teal) */
+  --color-info-foreground: var(--info-foreground); /* Chữ trên màu thông tin */
+
+  /* --- Độ bo góc --- */
+  --radius: 0.5rem; /* Giảm nhẹ để trông gọn gàng hơn một chút (tùy chọn) */
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 4px);
+
+  /* --- Bí danh Font --- */
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+/* --- Bảng màu chế độ SÁNG (Light Mode) - IMPROVED --- */
+:root {
+  /* --- Font Chữ --- */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
+  /* --- Màu Cơ bản & Trung tính --- */
+  --background: #fafbfc; /* Nền - slightly cooler */
+  --foreground: #0f172a; /* Chữ - richer black */
+  --card: #ffffff; /* Nền thẻ */
+  --card-foreground: var(--foreground); /* Chữ thẻ: Giống chữ chính */
+  --popover: #ffffff; /* Nền popover */
+  --popover-foreground: var(--foreground); /* Chữ popover: Giống chữ chính */
+  --border: #e2e8f0; /* Viền */
+  --input: #f1f5f9; /* Nền input */
+
+  /* --- Màu theo Vai trò (IMPROVED) --- */
+  --primary: #3b82f6; /* Chủ đạo - xanh sáng hơn, năng động hơn */
+  --primary-foreground: #ffffff; /* Chữ trên chủ đạo */
+  --secondary: #8b5cf6; /* Phụ - tím vibrant */
+  --secondary-foreground: #ffffff; /* Chữ trên phụ */
+  --muted: #f8fafc; /* Muted */
+  --muted-foreground: #64748b; /* Chữ muted */
+  --accent: #06b6d4; /* Nhấn - cyan tươi mới, hiện đại */
+  --accent-foreground: #ffffff; /* Chữ trên nhấn */
+  --ring: #3b82f6; /* Viền focus - giống primary */
+
+  /* --- Màu Phản hồi Ngữ nghĩa (IMPROVED) --- */
+  --destructive: #ef4444; /* Lỗi: Đỏ rõ ràng */
+  --destructive-foreground: #ffffff; /* Chữ trên lỗi */
+  --success: #10b981; /* Thành công: Xanh lá emerald */
+  --success-foreground: #ffffff; /* Chữ trên thành công */
+  --warning: #f59e0b; /* Cảnh báo: Amber */
+  --warning-foreground: #78350f; /* Chữ trên cảnh báo - contrast tốt hơn */
+  --info: #06b6d4; /* Thông tin: Cyan */
+  --info-foreground: #ffffff; /* Chữ trên thông tin */
+}
+
+/* --- Bảng màu chế độ TỐI (Dark Mode) - IMPROVED --- */
+.dark {
+  /* --- Màu Cơ bản & Trung tính --- */
+  --background: #0a0e1a; /* Nền tối - navy đậm, sang trọng hơn */
+  --foreground: #f1f5f9; /* Chữ sáng - mềm hơn cho mắt */
+  --card: #151b2e; /* Nền thẻ tối - xanh navy */
+  --card-foreground: var(--foreground); /* Chữ thẻ: Giống chữ chính */
+  --popover: #151b2e; /* Nền popover tối */
+  --popover-foreground: var(--foreground); /* Chữ popover: Giống chữ chính */
+  --border: #1e293b; /* Viền tối - subtle hơn */
+  --input: #1e293b; /* Nền input tối */
+
+  /* --- Màu theo Vai trò (DARK MODE OPTIMIZED) --- */
+  --primary: #60a5fa; /* Chủ đạo - xanh sáng, dễ nhìn */
+  --primary-foreground: #0f172a; /* Chữ trên chủ đạo - tối để contrast với xanh sáng */
+  --secondary: #a78bfa; /* Phụ - tím sáng mềm mại */
+  --secondary-foreground: #0f172a; /* Chữ trên phụ - tối để contrast với tím sáng */
+  --muted: #1e293b; /* Muted tối */
+  --muted-foreground: #94a3b8; /* Chữ muted - sáng hơn một chút */
+  --accent: #22d3ee; /* Nhấn - cyan sáng, nổi bật */
+  --accent-foreground: #0a0e1a; /* Chữ trên nhấn - tối */
+  --ring: #60a5fa; /* Viền focus */
+
+  /* --- Màu Phản hồi Ngữ nghĩa (DARK MODE OPTIMIZED) --- */
+  --destructive: #f87171; /* Lỗi: Đỏ mềm mại */
+  --destructive-foreground: #ffffff; /* Chữ trên lỗi */
+  --success: #34d399; /* Thành công: Xanh lá emerald sáng */
+  --success-foreground: #022c22; /* Chữ trên thành công - tối */
+  --warning: #fbbf24; /* Cảnh báo: Vàng gold sáng */
+  --warning-foreground: #422006; /* Chữ trên cảnh báo - contrast tốt */
+  --info: #22d3ee; /* Thông tin: Cyan sáng */
+  --info-foreground: #022c22; /* Chữ trên thông tin - tối */
+}
+
+/* --- Thêm màu hover cho navigation --- */
+@theme inline {
+  --color-nav-hover: var(--nav-hover); /* Màu hover cho navigation */
+  --color-nav-hover-foreground: var(
+    --nav-hover-foreground
+  ); /* Chữ trên nav hover */
+}
+
+/* Màu hover navigation cho chế độ sáng */
+:root {
+  --nav-hover: #eff6ff; /* Hover với blue tint nhẹ */
+  --nav-hover-foreground: #3b82f6; /* Chữ primary sáng khi hover */
+}
+
+/* Màu hover navigation cho chế độ tối */
+.dark {
+  --nav-hover: #1e293b; /* Hover tối cho navigation */
+  --nav-hover-foreground: #60a5fa; /* Chữ primary sáng khi hover */
+}
+
+/* --- Áp dụng Style cơ bản vào lớp 'base' của Tailwind --- */
+@layer base {
+  * {
+    /* Áp dụng viền mặc định và viền focus (outline) */
+    @apply border-border;
+  }
+  *:focus-visible {
+    /* Chỉ hiển thị outline khi focus bằng bàn phím/tab, dùng màu ring */
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  body {
+    /* Đặt màu nền, font chữ, màu chữ mặc định và làm mịn font */
+    @apply font-sans bg-background text-foreground antialiased;
+    /* Smooth transitions for theme switching */
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Improved scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30 rounded-md;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+
+  .dark ::-webkit-scrollbar-track {
+    @apply bg-card;
+  }
+}
+
+/* --- Wave Animation Keyframes --- */
+@keyframes move-forever {
+  0% {
+    transform: translate3d(-90px, 0, 0);
+  }
+  100% {
+    transform: translate3d(85px, 0, 0);
+  }
+}
+
+/* --- Shake Animation Keyframes for Egg Opening --- */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+/* --- Bounce In Animation Keyframes for Emoji --- */
+@keyframes bounce-in {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* --- Slide Up Animation Keyframes for Drawer --- */
+@keyframes slide-up {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* --- Wave Animation Classes --- */
+@layer components {
+  .animate-wave-1 {
+    animation: move-forever 7s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+    animation-delay: -2s;
+  }
+  .animate-wave-2 {
+    animation: move-forever 10s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+    animation-delay: -3s;
+  }
+  .animate-wave-3 {
+    animation: move-forever 13s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+    animation-delay: -4s;
+  }
+  .animate-wave-4 {
+    animation: move-forever 20s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+    animation-delay: -5s;
+  }
+
+  /* --- Shake Animation Class --- */
+  .animate-shake {
+    animation: shake 0.8s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  }
+
+  /* --- Bounce In Animation Class for Emoji --- */
+  .animate-bounce-in {
+    animation: bounce-in 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  /* --- Slide Up Animation for Drawer --- */
+  .animate-slide-up {
+    animation: slide-up 0.3s ease-out;
+  }
+}
+
+/* --- Line Clamp Utilities --- */
+@layer utilities {
+  .line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* Shimmer animation for skeleton loading */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

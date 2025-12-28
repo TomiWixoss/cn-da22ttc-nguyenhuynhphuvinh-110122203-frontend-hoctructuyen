@@ -1,0 +1,11 @@
+﻿username,email,password,full_name,student_code
+student001,student001@example.com,password123,Nguyễn Văn An,20250001
+student002,student002@example.com,password123,Trần Thị Bình,20250002
+student003,student003@example.com,password123,Lê Văn Cường,20250003
+student004,student004@example.com,password123,Phạm Thị Dung,20250004
+student005,student005@example.com,password123,Hoàng Văn Em,20250005
+student006,student006@example.com,password123,Vũ Thị Phương,20250006
+student007,student007@example.com,password123,Đặng Văn Giang,20250007
+student008,student008@example.com,password123,Bùi Thị Hoa,20250008
+student009,student009@example.com,password123,Đỗ Văn Inh,20250009
+student010,student010@example.com,password123,Cao Thị Kiều,20250010
